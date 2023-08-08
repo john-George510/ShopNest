@@ -70,7 +70,7 @@ export const popularProducts = [
   },
   {
     id: 7,
-    img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgS4cHGLJ-ZXHWNRtt8sXyy55r4xr7pDs3Ig",
   },
   {
     id: 8,
