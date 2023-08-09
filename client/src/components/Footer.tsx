@@ -8,10 +8,12 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import styled from "styled-components";
-//   import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const Left = styled.div`
@@ -46,6 +48,9 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const Title = styled.h3`
@@ -68,6 +73,9 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  @media screen and (max-width: 600px) {
+    background-color: #fff8f8;
+  }
 `;
 
 const ContactItem = styled.div`

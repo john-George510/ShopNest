@@ -4,6 +4,9 @@ import { Badge } from "@mui/material";
 
 const Container = styled.div`
   height: 60px;
+  @media screen and (max-width: 600px) {
+    height: 50px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -11,6 +14,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 600px) {
+    padding: 10px 0px;
+  }
 `;
 
 const Left = styled.div`
@@ -22,6 +28,9 @@ const Left = styled.div`
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -34,6 +43,9 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
+  @media screen and (max-width: 600px) {
+    width: 50px;
+  }
 `;
 
 const Center = styled.div`
@@ -43,18 +55,29 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+  }
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media screen and (max-width: 600px) {
+    flex: 2;
+    justify-content: center;
+  }
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+    margin-left: 10px;
+  }
 `;
 
 function Navbar() {
