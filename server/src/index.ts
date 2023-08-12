@@ -6,6 +6,7 @@ import userRoute from "./routes/user";
 import productRoute from "./routes/product";
 import cartRoute from "./routes/cart";
 import orderRoute from "./routes/order";
+import cors from "cors";
 const app = express();
 
 dotenv.config();
@@ -15,10 +16,8 @@ mongoose
   .connect(MONGO_URL)
   .then(() => console.log("connected to db"))
   .catch((err) => console.error(err));
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
