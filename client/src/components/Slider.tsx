@@ -14,7 +14,7 @@ const Container = styled.div`
   }
 `;
 
-const Arrow = styled.div<{ direction: "left" | "right" }>`
+const Arrow = styled.div`
   width: 50px;
   height: 50px;
   background-color: #fff7f7;
@@ -25,8 +25,6 @@ const Arrow = styled.div<{ direction: "left" | "right" }>`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
@@ -84,14 +82,14 @@ function Slider() {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction: String) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-    } else {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    } else {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
     }
   };
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
+      <Arrow style={{ left: "10px" }} onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
@@ -108,7 +106,7 @@ function Slider() {
           </Slide>
         ))}
       </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
+      <Arrow style={{ right: "10px" }} onClick={() => handleClick("right")}>
         <ArrowRightOutlined />
       </Arrow>
     </Container>
