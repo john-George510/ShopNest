@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -46,19 +47,20 @@ type CategoryItemProps = {
   item: {
     img: string;
     title: string;
+    cat: string;
   };
 };
 
 function CategoryItem({ item }: CategoryItemProps) {
   return (
     <Container>
-      {/* <Link to={`/products/${item.cat}`}> */}
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
-      </Info>
-      {/* </Link> */}
+      <Link to={`/products/${item.cat}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>SHOP NOW</Button>
+        </Info>
+      </Link>
     </Container>
   );
 }
