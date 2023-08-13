@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Product from "./Product";
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   padding: 20px;
@@ -21,10 +21,8 @@ function Products({ category, filters, sort }: productProps) {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(
-          category
-            ? `https://shopnest-87me.onrender.com/api/products?category=${category}`
-            : `https://shopnest-87me.onrender.com/api/products`
+        const res = await publicRequest.get(
+          category ? `/products?category=${category}` : `/products`
         );
         setProducts(res.data);
         setFilteredProducts(res.data);

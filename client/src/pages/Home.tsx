@@ -13,7 +13,7 @@ function Home() {
       <Navbar />
       <Slider />
       <Categories />
-      <Products category={""} filters={undefined} sort={undefined} />
+      <Products category={""} filters={{}} sort={""} />
       <Newsletter />
       <Footer />
     </>
