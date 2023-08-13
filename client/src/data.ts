@@ -50,7 +50,7 @@ export const popularProducts = [
   },
   {
     id: 2,
-    img: "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+    img: "https://philadelphiaprintworks.com/cdn/shop/products/angela_1.jpg?v=1645831870",
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ export const popularProducts = [
   },
   {
     id: 4,
-    img: "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRondo0y2K9ebYcGSwEJT7qtR1OWSldQhnHEsdYPP0L&s",
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ export const popularProducts = [
   },
   {
     id: 7,
-    img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+    img: "https://www.wildroar.in/wp-content/uploads/2021/11/IMG_8424_.jpg",
   },
   {
     id: 8,

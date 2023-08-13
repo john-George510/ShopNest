@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import Product from "./Product";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const Container = styled.div`
@@ -12,13 +11,13 @@ const Container = styled.div`
 `;
 interface productProps {
   category: string;
-  filters: any;
-  sort: any;
+  filters: object;
+  sort: string;
 }
 function Products({ category, filters, sort }: productProps) {
   const [products, setProducts] = useState([]);
-  // const [filteredProducts, setfilteredProducts] = useState([]);
-  console.log(filters, sort);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -28,18 +27,49 @@ function Products({ category, filters, sort }: productProps) {
             : `https://shopnest-87me.onrender.com/api/products`
         );
         setProducts(res.data);
+        setFilteredProducts(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getProducts();
-  }, [category]);
-  console.log(products);
+  }, []);
+
+  useEffect(() => {
+    category &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).every(([key, value]) =>
+            String(item[key]).includes(value as string)
+          )
+        )
+      );
+  }, [filters]);
+
+  useEffect(() => {
+    if (sort === "newest") {
+      setFilteredProducts(
+        (prev) => [...prev].sort((a: any, b: any) => a.createdAt - b.createdAt) //bug here...
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a: any, b: any) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a: any, b: any) => b.price - a.price)
+      );
+    }
+  }, [sort]);
   return (
     <Container>
-      {popularProducts.map((item) => (
-        <Product item={item} key={item.id} />
-      ))}
+      {category
+        ? (filteredProducts as any[]).map((item) => {
+            return <Product item={item} key={item._id} />;
+          })
+        : (filteredProducts as any[])
+            .slice(0, 8)
+            .map((item) => <Product item={item} key={item._id} />)}
     </Container>
   );
 }
