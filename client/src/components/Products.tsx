@@ -37,9 +37,14 @@ function Products({ category, filters, sort }: productProps) {
     category &&
       setFilteredProducts(
         products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            String(item[key]).includes(value as string)
-          )
+          Object.entries(filters).every(([key, value]) => {
+            const itemValue: Array<String> = item[key];
+            if (Array.isArray(itemValue)) {
+              return itemValue.some((val) => String(val).includes(value));
+            } else {
+              return String(itemValue).includes(value);
+            }
+          })
         )
       );
   }, [filters]);
