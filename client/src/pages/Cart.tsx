@@ -4,7 +4,7 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/reduxCart";
+import { RootState } from "../redux/cartRedux";
 
 const Container = styled.div``;
 

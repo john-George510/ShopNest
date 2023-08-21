@@ -1,0 +1,32 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+export interface userState {
+  user: any;
+  isFetching: boolean;
+  error: boolean;
+}
+
+const userSlice = createSlice({
+  name: "user",
+  initialState: {
+    currentUser: null,
+    isFetching: false,
+    error: false,
+  },
+  reducers: {
+    loginStart: (state) => {
+      state.isFetching = true;
+    },
+    loginSuccess: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    loginfailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+  },
+});
+
+export const { loginStart, loginSuccess, loginfailure } = userSlice.actions;
+export default userSlice.reducer;

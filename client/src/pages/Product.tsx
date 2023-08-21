@@ -7,9 +7,8 @@ import Newsletter from "../components/Newsletter";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/reduxCart";
+import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -214,9 +213,7 @@ function Product() {
               <Amount>{quantity}</Amount>
               <Add onClick={() => setQuantity((quantity) => quantity + 1)} />
             </AmountContainer>
-            <Link to="/cart">
-              <Button onClick={handleClick}>ADD TO CART</Button>
-            </Link>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
