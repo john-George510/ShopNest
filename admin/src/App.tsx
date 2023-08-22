@@ -1,8 +1,11 @@
-function App() {
+import React from "react";
 
+function App() {
   return (
-    <div>Hello World</div>
-  )
+    <>
+      <div>helllo world</div>
+    </>
+  );
 }
 
-export default App
+export default App;
