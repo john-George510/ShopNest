@@ -3,10 +3,7 @@
 .topBox {
   h1 {
     margin-bottom: 20px;
-
-    @include xxl{
-      font-size: 24px;
-    }
+    font-size: 29px;
   }
 
   .list {
@@ -26,10 +23,10 @@
           border-radius: 50%;
           object-fit: cover;
 
-          @include xxl{
+          @include xxl {
             display: none;
           }
-          @include lg{
+          @include lg {
             display: block;
           }
         }
@@ -46,18 +43,14 @@
           .email {
             font-size: 12px;
 
-            @include xxl{
+            @include xxl {
               display: none;
             }
-            @include lg{
+            @include lg {
               display: block;
             }
           }
         }
-      }
-
-      .amount {
-        font-weight: 500;
       }
     }
   }

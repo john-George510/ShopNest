@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Products.scss";
 import DataTable from "../../components/dataTable/DataTable";
 import Add from "../../components/add/Add";
 import { GridColDef } from "@mui/x-data-grid";
-import { products } from "../../data";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/apiCalls";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -22,8 +23,20 @@ const columns: GridColDef[] = [
     width: 250,
   },
   {
-    field: "color",
+    field: "desc",
+    headerName: "Description",
     type: "string",
+    width: 200,
+  },
+  {
+    field: "categories",
+    type: "array",
+    headerName: "Category",
+    width: 150,
+  },
+  {
+    field: "color",
+    type: "array",
     headerName: "Color",
     width: 150,
   },
@@ -33,38 +46,16 @@ const columns: GridColDef[] = [
     headerName: "Price",
     width: 200,
   },
-  {
-    field: "producer",
-    headerName: "Producer",
-    type: "string",
-    width: 200,
-  },
-  {
-    field: "createdAt",
-    headerName: "Created At",
-    width: 200,
-    type: "string",
-  },
-  {
-    field: "inStock",
-    headerName: "In Stock",
-    width: 150,
-    type: "boolean",
-  },
 ];
 
 const Products = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const products = useSelector((state: any) => state.product.products);
 
-  // TEST THE API
-
-  // const { isLoading, data } = useQuery({
-  //   queryKey: ["allproducts"],
-  //   queryFn: () =>
-  //     fetch("http://localhost:8800/api/products").then(
-  //       (res) => res.json()
-  //     ),
-  // });
+  useEffect(() => {
+    getProducts(dispatch);
+  }, [dispatch]);
 
   return (
     <div className="products">
@@ -73,13 +64,6 @@ const Products = () => {
         <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
       <DataTable slug="products" columns={columns} rows={products} />
-      {/* TEST THE API */}
-
-      {/* {isLoading ? (
-        "Loading..."
-      ) : (
-        <DataTable slug="products" columns={columns} rows={data} />
-      )} */}
       {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
