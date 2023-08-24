@@ -1,9 +1,12 @@
 import axios from "axios";
 
 const BASE_URL = "https://shopnest-87me.onrender.com/api";
-const TOKEN = JSON.parse(
+
+let TOKEN = "";
+const currentUser = JSON.parse(
   JSON.parse(localStorage.getItem("persist:root") || "").user
-).currentUser.accessToken;
+).currentUser;
+if (currentUser) TOKEN = currentUser.accessToken;
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,

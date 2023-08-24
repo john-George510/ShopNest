@@ -14,9 +14,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 function App() {
-  const admin = JSON.parse(
+  let admin = false;
+  const currentUser = JSON.parse(
     JSON.parse(localStorage.getItem("persist:root") || "").user
-  ).currentUser._doc.isAdmin;
+  ).currentUser;
+  console.log(currentUser);
+  if (currentUser) admin = currentUser._doc.isAdmin;
   const Layout = () => {
     return (
       <>
