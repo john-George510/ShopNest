@@ -7,7 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/apiCalls";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "_id", type: "string", headerName: "Product ID", width: 100 },
+  {
+    field: "title",
+    type: "string",
+    headerName: "Title",
+    width: 150,
+  },
   {
     field: "img",
     headerName: "Image",
@@ -15,12 +21,6 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       return <img src={params.row.img || "/noavatar.png"} alt="" />;
     },
-  },
-  {
-    field: "title",
-    type: "string",
-    headerName: "Title",
-    width: 250,
   },
   {
     field: "desc",
@@ -44,7 +44,7 @@ const columns: GridColDef[] = [
     field: "price",
     type: "string",
     headerName: "Price",
-    width: 200,
+    width: 100,
   },
 ];
 
@@ -52,7 +52,6 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const products = useSelector((state: any) => state.product.products);
-
   useEffect(() => {
     getProducts(dispatch);
   }, [dispatch]);
@@ -63,7 +62,12 @@ const Products = () => {
         <h1>Products</h1>
         <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
-      <DataTable slug="products" columns={columns} rows={products} />
+      <DataTable
+        slug="products"
+        dispatch={dispatch}
+        columns={columns}
+        rows={products}
+      />
       {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
